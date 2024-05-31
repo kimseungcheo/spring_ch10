@@ -1,0 +1,23 @@
+package daelim.spring_ch10.service;
+
+import daelim.spring_ch10.ListCommand;
+import daelim.spring_ch10.Member;
+import daelim.spring_ch10.MemberDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class MemberService {
+    @Autowired
+    private MemberDao memberDao;
+
+    public List<Member> selectByRegdate(ListCommand command) {
+        return memberDao.selectByRegdate(command.getFrom(), command.getTo());
+    }
+
+    public Member selectById(Long id) {
+        return memberDao.selectById(id);
+    }
+}
